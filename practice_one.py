@@ -52,14 +52,52 @@ print("Enter weekly budget")
 weekly_budget = get_number_from_user()
 print(weekly_budget + 100)
 
-# Витрати на Понеділок
-monday_expenses = get_number_from_user_with_prompt("Enter Monday expenses", 100)
+expenses = []
 
-# Витрати на Вівторок
-monday_expenses = get_number_from_user_with_prompt("Enter Tuesday expenses", 200)
+# Monday -> 
+# Tuesday -> 
+# Wednesday ->
 
-# Витрати на Середу
-monday_expenses = get_number_from_user_with_prompt("Enter Wednesday expenses", 300)
+# list, set, dict, tuple
+
+# list: expenses = [100, 200, 300]
+# monday_expenses = expenses[0]
+
+# set: expenses = {100, 200, 300} -> {300, 200, 100} | Do not recommend
+
+# dict: expenses = {'Monday': 100, 'Tuesday': 200, 'Wednesday': 300}
+
+# tuple: (1, 2, 3) Unchangeable -> No recommended 
+
+# days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+days_of_the_week = (
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday'
+)
+
+# for i in range(0, 7):
+#     # print(days_of_the_week[i])
+#     day = days_of_the_week[i]
+#     expenses.append(get_number_from_user_with_prompt("Enter " + day + " expenses: ", 100))
+
+for day in days_of_the_week:
+    expenses.append(get_number_from_user_with_prompt("Enter " + day + " expenses: ", 100))
+
+# # Витрати на Понеділок
+# expenses.append(get_number_from_user_with_prompt("Enter Monday expenses: ", 100))
+
+# # Витрати на Вівторок
+# expenses.append(get_number_from_user_with_prompt("Enter Tuesday expenses: ", 200))
+
+# # Витрати на Середу
+# expenses.append(get_number_from_user_with_prompt("Enter Wednesday expenses: ", 300))
+
+# print(expenses)
 
 
 # '300a'
