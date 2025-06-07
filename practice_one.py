@@ -70,7 +70,7 @@ expenses = []
 # tuple: (1, 2, 3) Unchangeable -> No recommended 
 
 # days_of_the_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-days_of_the_week = (
+DAYS_OF_THE_WEEK = (
     'Monday',
     'Tuesday',
     'Wednesday',
@@ -85,7 +85,9 @@ days_of_the_week = (
 #     day = days_of_the_week[i]
 #     expenses.append(get_number_from_user_with_prompt("Enter " + day + " expenses: ", 100))
 
-for day in days_of_the_week:
+# Ctrl C to stop
+
+for day in DAYS_OF_THE_WEEK:
     expenses.append(get_number_from_user_with_prompt("Enter " + day + " expenses: ", 100))
 
 # # Витрати на Понеділок
@@ -101,4 +103,5 @@ for day in days_of_the_week:
 
 
 # '300a'
+
 
