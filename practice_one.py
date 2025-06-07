@@ -24,13 +24,27 @@ $100
 # weekly_budget = input("Enter budget for the week :") # not int, but str "100.16" "100"
 # weekly_budget = int(weekly_budget)
 
-try:
-    weekly_budget = int(input("Enter budget for the week :")) # not int, but str "100.16" "100"
-except ValueError:
-    print("Weekly budget value is not correct. We are setting budget to 100...")
-    weekly_budget = 100
+def get_number_from_user():
+    try:
+        weekly_budget = int(input("Enter budget for the week :"))
+    except ValueError:
+        print("Weekly budget value is not correct. We are setting budget to 100...")
+        weekly_budget = 100
 
+    return weekly_budget
+
+# try:
+#     weekly_budget = int(input("Enter budget for the week :")) # not int, but str "100.16" "100"
+# except ValueError:
+#     print("Weekly budget value is not correct. We are setting budget to 100...")
+#     weekly_budget = 100
+
+weekly_budget = get_number_from_user()
 print(weekly_budget + 100)
+
+# Витрати на Понеділок
+
+
 
 # '300a'
 
