@@ -33,6 +33,15 @@ def get_number_from_user():
 
     return number
 
+def get_number_from_user_with_prompt(prompt, default_value):
+    try:
+        number = int(input(prompt))
+    except ValueError:
+        print("Number value is not correct. We are setting budget to 100...")
+        number = default_value
+
+    return number
+
 # try:
 #     weekly_budget = int(input("Enter budget for the week :")) # not int, but str "100.16" "100"
 # except ValueError:
@@ -44,7 +53,13 @@ weekly_budget = get_number_from_user()
 print(weekly_budget + 100)
 
 # Витрати на Понеділок
+monday_expenses = get_number_from_user_with_prompt("Enter Monday expenses", 100)
 
+# Витрати на Вівторок
+monday_expenses = get_number_from_user_with_prompt("Enter Tuesday expenses", 200)
+
+# Витрати на Середу
+monday_expenses = get_number_from_user_with_prompt("Enter Wednesday expenses", 300)
 
 
 # '300a'
