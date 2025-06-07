@@ -17,6 +17,8 @@ $100
 #hello 
 # First step: Enter budget
 
+# Dummy change
+
 # Ctrl /
 # COMMAND /
 # weekly_budget = input("Enter budget for the week :") # not int, but str "100.16" "100"
