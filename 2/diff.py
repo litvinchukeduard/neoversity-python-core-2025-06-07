@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 from itertools import zip_longest
+from colorama import Fore, Back, Style
 '''
 Наш додаток має приймати два файли File1 File2
 
@@ -48,8 +49,8 @@ def main():
     for number, (file_one_line, file_two_line) in enumerate(zip_longest(file_one_lines, file_two_lines)):
         if file_one_line != file_two_line:
             print(number + 1)
-            print(f'<{file_one_line.strip()}')
-            print(f'>{file_two_line.strip()}')
+            print(f'{Fore.GREEN}<{file_one_line.strip()}{Style.RESET_ALL}')
+            print(f'{Fore.RED}>{file_two_line.strip()}{Style.RESET_ALL}')
 
     # for i in range(len(file_one_lines)):
     #     file_one_line = file_one_lines[i].strip()
