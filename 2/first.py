@@ -18,7 +18,7 @@ python3 2/first.py 1/main.py
 
 if len(sys.argv) != 2:
     print("Please provide file path")
-    sys.exit()
+    exit(0)
 
 file_path = sys.argv[1]
 
