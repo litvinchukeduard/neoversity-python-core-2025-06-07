@@ -1,4 +1,13 @@
 from dataclasses import dataclass
+from enum import Enum
+
+# GENRES = ["Pop", "Rock", "Metal",]
+# Enum -> enumerate
+
+
+class Genre(Enum):
+    ROCK = 1
+    POP = 2
 
 
 @dataclass
@@ -9,12 +18,13 @@ class Song:
     author: str
     title: str
     duration_in_seconds: int
-    genre: str
+    genre: Genre
 
     # self.author, self.title
     def __post_init__(self):
         if self.duration_in_seconds < 0:
             raise ValueError("Duration can not be less than 0")
+        self.genre = self.genre.capitalize() # hello -> Hello
 
 
 # class Song:
@@ -34,6 +44,11 @@ class Song:
         
 
 if __name__ == '__main__':
-    song = Song("Author One", "Song One", -1, "Pop")
+    # {"author": "Author One"}
+    song = Song("Author One", "Song One", 0, "Pop")
+    song = Song("Author One", "Song One", 0, "Rock 10")
+
+    # song.genre = "Rock 10"
     # print(song.title)
-    print(song)
+    # print(song)
+    print(Genre.POP.name)
