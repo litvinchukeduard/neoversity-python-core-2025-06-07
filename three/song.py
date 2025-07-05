@@ -49,6 +49,8 @@ if __name__ == '__main__':
     song = Song("Author One", "Song One", 0, "Pop")
     song = Song("Author One", "Song One", 0, "Rock 10")
 
+    # print("Choose genre: Pop - 1, Rock - 2")
+
     # song.genre = "Rock 10"
     # print(song.title)
     # print(song)
