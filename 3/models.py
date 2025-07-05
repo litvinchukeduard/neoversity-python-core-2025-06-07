@@ -1,13 +1,14 @@
 from dataclasses import dataclass
-from enum import Enum
+from enum import StrEnum, Enum, auto
 
 # GENRES = ["Pop", "Rock", "Metal",]
 # Enum -> enumerate
 
 
-class Genre(Enum):
-    ROCK = 1
-    POP = 2
+class Genre(StrEnum):
+    ROCK = auto()
+    POP = auto()
+    METAL = auto()
 
 
 @dataclass
@@ -51,4 +52,4 @@ if __name__ == '__main__':
     # song.genre = "Rock 10"
     # print(song.title)
     # print(song)
-    print(Genre.POP.name)
+    print(Genre.POP.value)
