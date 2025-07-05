@@ -117,6 +117,9 @@ if __name__ == '__main__':
 
     print(playlist_one)
 
+    with open("hello.txt"):
+        ...
+
     # for el in playlist_one:
     #     print(el)
 
