@@ -27,6 +27,19 @@ class Playlist:
         self.add_song(song)
         return self
     
+    def __iter__(self):
+        '''Починає ітерацію'''
+        self.iteration_index = 0
+        return self
+
+    def __next__(self):
+        '''Повертає. наступний елемент'''
+        if self.iteration_index >= len(self.songs):
+            raise StopIteration
+        next_element = self.songs[self.iteration_index]
+        self.iteration_index += 1
+        return next_element
+    
     def __call__(self):
         # sum is way better
         # total_seconds = 0
@@ -52,9 +65,18 @@ if __name__ == '__main__':
     print(playlist_one)
     playlist_one += song_two
 
-    print(playlist_one())
+    # print(playlist_one())
 
-    
+    # iterator = iter(playlist_one)
+    # print(next(iterator))
+    # print(next(iterator))
+    # print(next(iterator))
+    # print(next(iterator))
+
+    for el in playlist_one:
+        print(el)
+
+
 
     # playlist_one("John", "Doe")
     # my_list = [1, 2, 3]
