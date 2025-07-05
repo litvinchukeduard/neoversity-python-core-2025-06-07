@@ -15,6 +15,14 @@ class Playlist:
     def __init__(self, name: str):
         self.name = name
         self.songs = []
+        self.filename = "playlist.txt"
+
+    def write_song_name_to_file(self, song: Song):
+        '''
+        Що цей метод працює лише коли відкрити файл
+        '''
+        if self.file:
+            self.file.write(song.title)
 
     def add_song(self, song: Song):
         self.songs.append(song)
@@ -36,6 +44,14 @@ class Playlist:
     def create_shuffle_iterator(self):
         return PlaylistShuffleIterator(self.songs)
 
+    def __enter__(self):
+        print("Reading playlist from file...")
+        self.file = open(self.filename, 'w')
+        return self
+    
+    def __exit__(self, exc_type, exc_value, traceback):
+        print("Closing file...")
+        self.file.close()
     # def __next__(self):
     #     '''Повертає. наступний елемент'''
     #     if self.iteration_index >= len(self.songs):
@@ -107,23 +123,31 @@ if __name__ == '__main__':
     # print(playlist_one())
 
     iterator = iter(playlist_one.create_shuffle_iterator())
-    print(next(iterator))
+    # print(next(iterator))
 
-    iterator_two = iter(playlist_one.create_shuffle_iterator())
-    print(next(iterator_two))
-    print(next(iterator_two))
+    # iterator_two = iter(playlist_one.create_shuffle_iterator())
+    # print(next(iterator_two))
+    # print(next(iterator_two))
 
-    print(next(iterator))
+    # print(next(iterator))
 
-    print(playlist_one)
+    # print(playlist_one)
 
-    with open("hello.txt"):
-        ...
+    with playlist_one:
+        playlist_one.write_song_name_to_file(song_one)
+
+    # file = open("hello.txt")
+    # print(file.readlines())
+    # file.close()
+
+    # with open("hello.txt") as file:
+    #     print(file.readlines())
 
     # for el in playlist_one:
     #     print(el)
 
-
+    # with playlist_one as playlist:
+    #     ...
 
     # playlist_one("John", "Doe")
     # my_list = [1, 2, 3]
