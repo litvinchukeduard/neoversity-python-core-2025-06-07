@@ -11,4 +11,10 @@ Playlist(UserList)
 
 my_list = [1, 2, 3, 4]
 
-print(reduce(lambda accumulator, element: accumulator + element, my_list))
+my_list_two = my_list
+
+my_list_two[1] = 8
+
+print(my_list)
+
+# print(reduce(lambda accumulator, element: accumulator + element, my_list))

@@ -1,3 +1,5 @@
+import random
+
 from song import Song, Genre
 
 
@@ -29,16 +31,18 @@ class Playlist:
     
     def __iter__(self):
         '''Починає ітерацію'''
-        self.iteration_index = 0
-        return self
+        return PlaylistIterator(self.songs)
+    
+    def create_shuffle_iterator(self):
+        return PlaylistShuffleIterator(self.songs)
 
-    def __next__(self):
-        '''Повертає. наступний елемент'''
-        if self.iteration_index >= len(self.songs):
-            raise StopIteration
-        next_element = self.songs[self.iteration_index]
-        self.iteration_index += 1
-        return next_element
+    # def __next__(self):
+    #     '''Повертає. наступний елемент'''
+    #     if self.iteration_index >= len(self.songs):
+    #         raise StopIteration
+    #     next_element = self.songs[self.iteration_index]
+    #     self.iteration_index += 1
+    #     return next_element
     
     def __call__(self):
         # sum is way better
@@ -54,6 +58,39 @@ class Playlist:
         return f'Playlist(name="{self.name}", songs={self.songs})'
 
 
+class PlaylistIterator:
+    def __init__(self, songs: list[Song]):
+        self.iteration_index = 0
+        self.songs = songs
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.iteration_index >= len(self.songs):
+            raise StopIteration
+        next_element = self.songs[self.iteration_index]
+        self.iteration_index += 1
+        return next_element
+    
+
+class PlaylistShuffleIterator:
+    def __init__(self, songs: list[Song]):
+        self.iteration_index = 0
+        songs_copy = songs[:]
+        random.shuffle(songs_copy)
+        self.songs = songs_copy
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.iteration_index >= len(self.songs):
+            raise StopIteration
+        next_element = self.songs[self.iteration_index]
+        self.iteration_index += 1
+        return next_element
+
 if __name__ == '__main__':
     song_one = Song("Author One", "Song One", 100, Genre.POP)
     song_two = Song("Author Two", "Song Two", 300, Genre.ROCK)
@@ -62,19 +99,26 @@ if __name__ == '__main__':
     # playlist_one.add_song(song_one)
     # playlist_one.add_song(song_two)
     playlist_one += song_one
-    print(playlist_one)
+    # print(playlist_one)
     playlist_one += song_two
+
+    print(playlist_one)
 
     # print(playlist_one())
 
-    # iterator = iter(playlist_one)
-    # print(next(iterator))
-    # print(next(iterator))
-    # print(next(iterator))
-    # print(next(iterator))
+    iterator = iter(playlist_one.create_shuffle_iterator())
+    print(next(iterator))
 
-    for el in playlist_one:
-        print(el)
+    iterator_two = iter(playlist_one.create_shuffle_iterator())
+    print(next(iterator_two))
+    print(next(iterator_two))
+
+    print(next(iterator))
+
+    print(playlist_one)
+
+    # for el in playlist_one:
+    #     print(el)
 
 
 
