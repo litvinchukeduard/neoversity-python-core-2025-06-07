@@ -25,7 +25,7 @@ class Song:
     def __post_init__(self):
         if self.duration_in_seconds < 0:
             raise ValueError("Duration can not be less than 0")
-        self.genre = self.genre.capitalize() # hello -> Hello
+        # self.genre = self.genre.capitalize() # hello -> Hello
 
 
 # class Song:
@@ -46,8 +46,8 @@ class Song:
 
 if __name__ == '__main__':
     # {"author": "Author One"}
-    song = Song("Author One", "Song One", 0, "Pop")
-    song = Song("Author One", "Song One", 0, "Rock 10")
+    song = Song("Author One", "Song One", 0, Genre.POP)
+    song = Song("Author One", "Song One", 0, Genre.ROCK)
 
     # print("Choose genre: Pop - 1, Rock - 2")
 
